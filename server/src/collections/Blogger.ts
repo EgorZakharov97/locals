@@ -9,8 +9,8 @@ const onlyNameIfPublic: BeforeReadHook = ({ req: { user }, doc }) => {
   return doc;
 };
 
-const Users: CollectionConfig = {
-  slug: 'users',
+const Blogger: CollectionConfig = {
+  slug: 'blogger',
   auth: true,
   admin: {
     useAsTitle: 'email',
@@ -30,4 +30,4 @@ const Users: CollectionConfig = {
   ],
 };
 
-export default Users;
+export default Blogger;

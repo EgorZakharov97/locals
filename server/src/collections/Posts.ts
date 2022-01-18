@@ -17,7 +17,7 @@ const Posts: CollectionConfig = {
     {
       name: 'author',
       type: 'relationship',
-      relationTo: 'users',
+      relationTo: 'business',
     },
     {
       name: 'publishedDate',
@@ -27,6 +27,15 @@ const Posts: CollectionConfig = {
       name: 'category',
       type: 'relationship',
       relationTo: 'categories'
+    },
+    {
+      name: 'featureImage',
+      type: 'upload',
+      label: 'Image',
+      relationTo: 'media',
+      admin: {
+        description: 'No selfies',
+      },
     },
     {
       name: 'tags',
