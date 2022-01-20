@@ -1,9 +1,10 @@
 import { CollectionConfig } from 'payload/types';
 
-const Tags: CollectionConfig = {
-  slug: 'tags',
+const Users: CollectionConfig = {
+  slug: 'admins',
+  auth: true,
   admin: {
-    useAsTitle: 'name',
+    useAsTitle: 'email',
   },
   access: {
     read: () => true,
@@ -12,9 +13,9 @@ const Tags: CollectionConfig = {
     {
       name: 'name',
       type: 'text',
-    },
+      required: true,
+    }
   ],
-  timestamps: false,
-}
+};
 
-export default Tags;
+export default Users;
