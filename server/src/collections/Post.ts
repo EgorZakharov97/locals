@@ -1,4 +1,4 @@
-import { CollectionConfig, FieldHook, Hook } from 'payload/types';
+import { CollectionConfig, FieldHook } from 'payload/types';
 
 const Posts: CollectionConfig = {
   slug: 'posts',
@@ -41,6 +41,20 @@ const Posts: CollectionConfig = {
       name: 'title',
       type: 'text',
       required: true,
+    },
+    {
+      name: 'tags',
+      type: 'relationship',
+      relationTo: 'tag',
+      required: false,
+      hasMany: true,
+    },
+    {
+      name: 'categories',
+      type: 'relationship',
+      relationTo: 'category',
+      required: false,
+      hasMany: true,
     },
     {
       name: 'author',

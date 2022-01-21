@@ -4,6 +4,8 @@ import Users from './collections/Users';
 import Admins from './collections/Admins';
 import Post from './collections/Post';
 import Business from './collections/Business';
+import Tag from './collections/Tag';
+import Category from './collections/Category';
 
 export default buildConfig({
   serverURL: 'http://localhost:3000',
@@ -15,6 +17,8 @@ export default buildConfig({
     Admins,
     Post,
     Business,
+    Tag,
+    Category,
   ],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts')
