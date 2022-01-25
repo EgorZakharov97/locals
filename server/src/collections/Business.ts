@@ -7,30 +7,6 @@ const Users: CollectionConfig = {
     defaultColumns: ['name', 'email'],
   },
   auth: true,
-  upload: {
-    staticURL: '/media',
-    staticDir: './media',
-    adminThumbnail: ({ doc }) => `/media/${doc.filename}`,
-    imageSizes: [
-      {
-        name: 'tablet',
-        width: 640,
-        height: 480,
-        crop: 'left top',
-      },
-      {
-        name: 'mobile',
-        width: 320,
-        height: 240,
-        crop: 'left top',
-      },
-      {
-        name: 'icon',
-        width: 16,
-        height: 16,
-      },
-    ]
-  },
   access: {
     read: () => true,
   },
@@ -40,6 +16,12 @@ const Users: CollectionConfig = {
       type: 'text',
       required: true,
       unique: true,
+    },
+    {
+      name: 'avatar',
+      type: 'upload',
+      label: 'Image',
+      relationTo: 'media'
     }
   ],
 };

@@ -1,36 +1,22 @@
-import { CollectionConfig, FieldHook } from 'payload/types';
+import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
+
+const beforeValidateHook: CollectionBeforeValidateHook = ({ req, data }) => {
+  console.log(data)
+  return data;
+}
 
 const Posts: CollectionConfig = {
   slug: 'post',
   admin: {
-    defaultColumns: ['title', 'image', 'timestamp'],
+    defaultColumns: ['title', 'author', 'timestamp'],
     useAsTitle: 'title',
   },
   access: {
     read: () => true,
   },
-  upload: {
-    staticURL: '/media',
-    staticDir: './media',
-    adminThumbnail: ({ doc }) => `/media/${doc.filename}`,
-    imageSizes: [
-      {
-        name: 'tablet',
-        width: 640,
-        height: 480,
-        crop: 'left top',
-      },
-      {
-        name: 'mobile',
-        width: 320,
-        height: 240,
-        crop: 'left top',
-      },
-      {
-        name: 'icon',
-        width: 16,
-        height: 16,
-      },
+  hooks: {
+    beforeValidate: [
+      beforeValidateHook,
     ]
   },
   fields: [
@@ -38,6 +24,12 @@ const Posts: CollectionConfig = {
       name: 'title',
       type: 'text',
       required: true,
+    },
+    {
+      name: 'featureImage',
+      type: 'upload',
+      label: 'Feature Image',
+      relationTo: 'media'
     },
     {
       name: 'tags',
@@ -63,9 +55,9 @@ const Posts: CollectionConfig = {
       // }
     },
     {
-      name: 'richText',
+      name: 'body',
       type: 'richText',
-      label: 'Rich Text',
+      label: 'Body',
       required: true,
       admin: {
         elements: [

@@ -5,10 +5,11 @@ import Footer from '../components/Footer';
 import Preload from '../components/Preload';
 import qs from 'qs';
 import BlogPostPreview from '../components/BlogPostPreview';
+import Subscribe from '../components/Subscribe';
 
 async function getPosts(page=1) {
   const query = qs.stringify({ page })
-  const res = await fetch(`http://localhost:3000/api/posts?${query}`)
+  const res = await fetch(`http://localhost:3000/api/post?${query}`)
   const posts = await res.json()
   return posts;
 }
@@ -117,23 +118,7 @@ function Blog(props) {
           </section>
           {/* <!-- blog-area end --> */}
          {/* <!-- subscribe-area start --> */}
-         <section className="subscribe-area footer-bg border-bot pt-145 pb-50 pt-md-90 pt-xs-90">
-              <div className="container">
-                  <div className="row justify-content-center">
-                      <div className="col-xl-8">
-                          <div className="subscribe-wrapper text-center mb-30">
-                              <h2>Subscribe our Newsletter and Get every updates.</h2>
-                             <div className="subscribe-form-box pos-rel">
-                                  <form className="subscribe-form">
-                                      <input type="text" placeholder="Write Your E-mail"/>
-                                  </form>
-                                  <button className="sub_btn">Subscribe Now</button>
-                             </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-         </section>
+         <Subscribe />
          {/* <!-- subscribe-area end --> */}
       </main>
       {/* <!--footer-area start--> */}

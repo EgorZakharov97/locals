@@ -1,6 +1,6 @@
 {
-  "name": "payload-starter-typescript",
-  "description": "Blank template - no collections",
+  "name": "payload-blog-typescript",
+  "description": "Blog template",
   "version": "1.0.0",
   "main": "dist/server.js",
   "license": "MIT",
@@ -15,8 +15,7 @@
   "dependencies": {
     "payload": "^0.14.0",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "react": "^17.0.2"
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.9",
