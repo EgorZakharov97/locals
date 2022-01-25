@@ -1,7 +1,7 @@
 import { CollectionConfig, FieldHook } from 'payload/types';
 
 const Posts: CollectionConfig = {
-  slug: 'posts',
+  slug: 'post',
   admin: {
     defaultColumns: ['title', 'image', 'timestamp'],
     useAsTitle: 'title',
@@ -33,9 +33,6 @@ const Posts: CollectionConfig = {
       },
     ]
   },
-  hooks: {
-    
-  },
   fields: [
     {
       name: 'title',
@@ -60,7 +57,7 @@ const Posts: CollectionConfig = {
       name: 'author',
       type: 'relationship',
       relationTo: 'business',
-      // required: true,
+      required: true,
       // hooks: {
       //   beforeValidate: (params) => (params.req.user ? params.req.user : null) as FieldHook<Hook, 'title'>,
       // }
