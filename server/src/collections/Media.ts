@@ -47,7 +47,7 @@ const Media: CollectionConfig = {
   upload: {
     staticURL: '/media',
     staticDir: './media',
-    adminThumbnail: ({ doc }) => `api/media/${doc.filename}`,
+    adminThumbnail: ({ doc }) => `/media/${doc.filename}`,
     imageSizes: [
       {
         name: 'maintainedAspectRatio',

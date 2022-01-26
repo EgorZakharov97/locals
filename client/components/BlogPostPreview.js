@@ -1,32 +1,19 @@
 import React from 'react';
 
-const styles = {
-    img: {
-        width: '300px',
-        height: '300px',
-        objectFit: 'cover',
-    }
-}
-
 function BlogPostPreview(props) {
-    console.log(props)
   return (
-    <div className="row mb-30 align-items-center">
-        <div className="col-lg-3 col-xs-12">
-            <div className="mb-30">
-                <img style={styles.img} src={props.featureImage.url} alt=""/>
+    <div className="col-lg-4 col-md-6">
+        <div className="z-blogs mb-30">
+            <div className="z-blogs__thumb mb-30">
+            <a href={`/blog/${props.slug}`}><img className='w-100' src={props.featureImage.url} alt={props.featureImage.alt}/></a>
             </div>
-        </div>
-        <div className="col-lg-9 col-xs-12">
-            <div className="faq-que-list pl-75">
-                <div className="section-title section-title-2 mb-45">
-                    <h5 className="bottom-line left-line mb-25 pl-40">{props.author.name}</h5>
-                    <h2 className="mb-25">{props.title}</h2>
-                    <p>{props.body[0].children[0].text.substring(0, 400) + "..."}</p>
+            <div className="z-blogs__content">
+                <h5 className="mb-25">{props.category.title}</h5>
+                <h4 className="sub-title mb-15"><a href={`/blog/${props.slug}`}>{props.body[0].children[0].text.substring(0, 50) + "..."}</a></h4>
+                <div className="z-blogs__meta d-sm-flex justify-content-between pt-20">
+                    <span>Date : {(new Date(props.createdAt)).toLocaleDateString("en-US")}</span>
+                    <span>By {props.author.name}</span>
                 </div>
-            </div>
-            <div className="faq-btn pl-75">
-                <a href={`/blog/${props.title}`} className="theme_btn">Read More</a>
             </div>
         </div>
     </div>

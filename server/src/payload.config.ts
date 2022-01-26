@@ -7,6 +7,7 @@ import Business from './collections/Business';
 import Tag from './collections/Tag';
 import Category from './collections/Category';
 import Media from './collections/Media';
+import EmailSubscriptions from './collections/EmailSubscriptions';
 
 export default buildConfig({
   serverURL: 'http://localhost:3000',
@@ -21,6 +22,7 @@ export default buildConfig({
     Tag,
     Category,
     Media,
+    EmailSubscriptions,
   ],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts')

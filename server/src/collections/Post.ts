@@ -8,7 +8,7 @@ const beforeValidateHook: CollectionBeforeValidateHook = ({ req, data }) => {
 const Posts: CollectionConfig = {
   slug: 'post',
   admin: {
-    defaultColumns: ['title', 'author', 'timestamp'],
+    defaultColumns: ['slug', 'title', 'author', 'timestamp'],
     useAsTitle: 'title',
   },
   access: {
@@ -26,10 +26,18 @@ const Posts: CollectionConfig = {
       required: true,
     },
     {
+      name: 'slug',
+      type: 'text',
+      unique: true,
+      index: true,
+      required: true,
+      validate: (val: string) => (val.includes(' ') ? "Slug cannot include spaces!" : true),
+    },
+    {
       name: 'featureImage',
       type: 'upload',
       label: 'Feature Image',
-      relationTo: 'media'
+      relationTo: 'media',
     },
     {
       name: 'tags',
@@ -39,11 +47,11 @@ const Posts: CollectionConfig = {
       hasMany: true,
     },
     {
-      name: 'categories',
+      name: 'category',
       type: 'relationship',
       relationTo: 'category',
-      required: false,
-      hasMany: true,
+      required: true,
+      hasMany: false,
     },
     {
       name: 'author',

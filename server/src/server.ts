@@ -1,8 +1,12 @@
 import express from 'express';
 import payload from 'payload';
+import cors from 'cors';
 
 require('dotenv').config();
 const app = express();
+app.use(cors({
+  origin: 'http://localhost:3001',
+}))
 
 // Initialize Payload
 payload.init({
